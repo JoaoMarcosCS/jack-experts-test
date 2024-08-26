@@ -1,16 +1,15 @@
 import 'reflect-metadata';
 import express from "express";
 import * as dotenv from "dotenv";
-import userRepository from "./user/user.repository";
-import dataSource from './database/config/data-source';
+import UserRepository from "./user/user.repository"
+
 dotenv.config();
 
-const app = express();                       
+const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/", userRepository.findOne);
-
+app.use("/", UserRepository.index)
 
 export default app;

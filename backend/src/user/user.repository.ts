@@ -1,25 +1,25 @@
-import { Repository } from "typeorm"
-import { User } from "./user.entity"
-import dataSource from "../database/config/data-source"
+import { Repository } from "typeorm";
+import { User } from "./user.entity";
+import connection from "../database/config/data-source"
 
-class UserRepository {
-
+class UserService {
     private repo: Repository<User>;
 
-    private async initialize() {
-        this.repo = (await dataSource).getRepository(User);
+    async initialize() {
+        this.repo = (await connection).getRepository(User);
     }
 
     constructor() {
         this.initialize();
     }
 
-    public async findOne() {
+    async index() {
         const response = await this.repo.find();
-        if (response.length === 0) return "Vazio"
-
-        return response;
+        console.log("Aqui");
+        return "vazio";
     }
+
+
 }
 
-export default new UserRepository()
+export default new UserService();
