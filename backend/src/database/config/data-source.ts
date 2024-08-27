@@ -2,20 +2,17 @@ import { User } from "../../user/user.entity"
 import { DataSource } from "typeorm"
 
 export const AppDataSource = new DataSource({
-    type: "mysql",
-    host: "localhost",
-    port: 3306,
-    username: 'my_user',
-    password: 'my_password',
-    database: 'my_database',
+    type: "sqlite",
+    database: "db.sqlite",
     synchronize: true,
-    entities: [User]
+    entities: [User],
+    logging: true
 })
 
 AppDataSource.initialize()
     .then(() => {
-        console.log("Data Source has been initialized!")
+        console.log("Database connected")
     })
     .catch((err) => {
-        console.error("Error during Data Source initialization", err)
+        console.error("Database disconnected: ", err)
     })

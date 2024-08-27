@@ -9,10 +9,10 @@ export class userRepository {
     private readonly DataSource: DataSource
   ) { }
 
-  async findOne(email: number): Promise<UserDto | null> {
+  async findOne(email: string): Promise<UserDto | null> {
     const data = await this.DataSource.manager.findOne(User, {
       where: {
-        id: email
+        email: email
       }
     })
 
@@ -21,7 +21,7 @@ export class userRepository {
     return parseUserDto(data);
   }
 
-  async update(params: UpdateUserDto): Promise<UserDto | boolean>{
-    const data = await this.DataSource.createQueryBuilder
-  }
+  // async update(params: UpdateUserDto): Promise<UserDto | boolean>{
+  //   const data = await this.DataSource.createQueryBuilder
+  // }
 }
