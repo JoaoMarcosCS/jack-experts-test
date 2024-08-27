@@ -5,8 +5,8 @@ dotenv.config();
 
 const envSchema = z.object({
   APP_PORT: z.string(),
-  DATABASE_PASSWORD: z.string(),
-  DATABASE_URL: z.string(),
+  TOKEN_SECRET: z.string(),
+  TOKEN_EXPIRATION: z.string(),
 
 })
 

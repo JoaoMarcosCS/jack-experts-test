@@ -12,5 +12,15 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
+  # backend:
+  #   container_name: api
+  #   build: ./backend/
+  #   env_file:
+  #     - ./backend/.env
+  #   depends_on:
+  #     - database
+  #   restart:
+  #     always
+
 volumes:
   mysql_data:
