@@ -20,6 +20,14 @@ class UserService {
 
     }
 
+    async findOneByEmail(email: string) {
+        const result = await userRepository.findByEmail(email);
+
+        if (!result) return false;
+
+        return result
+    }
+
     async findOne(id: number) {
         const result = await userRepository.findById(id);
 

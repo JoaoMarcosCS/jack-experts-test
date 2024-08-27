@@ -31,7 +31,7 @@ class UserRepository {
     return parseUserDto(data);
   }
 
-  async findByEmail(email: string): Promise<UserDto | null> {
+  async findByEmail(email: string): Promise<User | null> {
     const data = await AppDataSource.manager.findOne(User, {
       where: {
         email: email
@@ -40,7 +40,7 @@ class UserRepository {
 
     if (!data) return null
 
-    return parseUserDto(data);
+    return data;
   }
 
   async update(id:number, updateData: UpdateUserDto): Promise<boolean>{
