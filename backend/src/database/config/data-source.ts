@@ -1,11 +1,11 @@
-import { User } from "../../user/user.entity"
+
 import { DataSource } from "typeorm"
 
 export const AppDataSource = new DataSource({
     type: "sqlite",
     database: "db.sqlite",
     synchronize: true,
-    entities: [User],
+    entities: ["src/entities/*{.ts,.js}*"],
     logging: true
 })
 

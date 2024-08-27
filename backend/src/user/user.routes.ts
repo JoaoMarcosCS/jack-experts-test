@@ -1,17 +1,12 @@
 import { Router } from "express";
-import {Request, Response} from "express"
-import {  userRepository } from "./user.repository";
-import { AppDataSource } from "../database/config/data-source";
-
-const UserRouter = Router()
-
-UserRouter.get("/", async (req: Request, res: Response) => {
-    const UserRepository = new userRepository(AppDataSource);
-    const user = UserRepository.findOne("jmcsjoso@gmail.com");
-    if(!user) return res.json({})
-
-    return res.json(user);
-})
+import userController from "./user.controller";
 
 
-export {UserRouter};
+const UserRouters = Router()
+
+UserRouters.get("/user/:id", userController.findOnde);
+UserRouters.post("/user", userController.create);
+UserRouters.delete('/user/:id', userController.delete);
+UserRouters.patch("/user/:id", userController.update)
+
+export {UserRouters};
