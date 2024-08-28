@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./user.entity";
 
 @Entity()
@@ -7,6 +7,9 @@ export class Task {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @CreateDateColumn({ type: 'datetime' })
+    createdAt: Date;
+    
     @Column()
     title: string;
 
