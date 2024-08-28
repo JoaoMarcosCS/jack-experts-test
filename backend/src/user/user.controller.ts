@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { CreateUserSchema } from "./validations/create-user";
 import userService from "./user.service";
 import { UpdateUserSchema } from "./validations/update-user";
+import { ZodError } from "zod";
 
 class UserController {
     async create(req: Request, res: Response) {
@@ -14,7 +15,11 @@ class UserController {
                 ok: result
             });
         } catch (error) {
-            if (error instanceof Error) {
+            if (error instanceof ZodError) {
+                return res.status(400).json({
+                    error: error.errors[0].message
+                });
+            }else if (error instanceof Error) {
                 return res.status(400).json({
                     error: error.message
                 })
@@ -35,7 +40,11 @@ class UserController {
             });
 
         } catch (error) {
-            if (error instanceof Error) {
+            if (error instanceof ZodError) {
+                return res.status(400).json({
+                    error: error.errors[0].message
+                });
+            }else if (error instanceof Error) {
                 return res.status(400).json({
                     error: error.message
                 })

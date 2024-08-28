@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import { CreateTaskSchema } from "./validations/create-task"
 import taskService from "./task.service";
 import { UpdateTaskSchema } from "./validations/update-task";
+import { ZodError } from "zod";
 
 class TaskController {
     async create(req: Request, res: Response) {
@@ -14,7 +15,11 @@ class TaskController {
                 ok: result
             });
         } catch (error) {
-            if (error instanceof Error) {
+            if (error instanceof ZodError) {
+                return res.status(400).json({
+                    error: error.errors[0].message
+                });
+            }else if (error instanceof Error) {
                 return res.status(400).json({
                     error: error.message
                 })
@@ -52,7 +57,11 @@ class TaskController {
                 ok: result
             });
         } catch (error) {
-            if (error instanceof Error) {
+            if (error instanceof ZodError) {
+                return res.status(400).json({
+                    error: error.errors[0].message
+                });
+            }else if (error instanceof Error) {
                 return res.status(400).json({
                     error: error.message
                 })
