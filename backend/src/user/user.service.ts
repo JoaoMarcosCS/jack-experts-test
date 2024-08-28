@@ -10,7 +10,7 @@ class UserService {
 
         const existUser = await userRepository.findByEmail(data.email);
 
-        if (existUser) throw new Error("Usuário já existe");
+        if (existUser) throw new Error("Email in use by another user");
 
         data.password = await generateHash(data.password);
 
@@ -31,7 +31,7 @@ class UserService {
     async findOne(id: number) {
         const result = await userRepository.findById(id);
 
-        if (!result) return [];
+        if (!result) return false;
 
         return result
     }
@@ -40,11 +40,11 @@ class UserService {
 
         const existUser = await userRepository.findById(id);
 
-        if (!existUser) throw new Error("Usuário não existe");
-        
+        if (!existUser) throw new Error("User not found");
+
         const result = await userRepository.update(id, data);
 
-        if (!result) throw new Error("Erro ao alterar os dados");
+        if (!result) throw new Error("Error at data change");
 
         return true;
     }
@@ -52,11 +52,11 @@ class UserService {
     async delete(id: number) {
         const existUser = await userRepository.findById(id);
 
-        if (!existUser) throw new Error("Usuário não existe");
-        
+        if (!existUser) throw new Error("User not found");
+
         const result = await userRepository.delete(id);
 
-        if (!result) throw new Error("Erro ao excluir os dados");
+        if (!result) throw new Error("Error at exclude data");
 
         return true;
     }

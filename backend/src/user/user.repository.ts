@@ -19,7 +19,7 @@ class UserRepository {
       return true;
   }
 
-  async findById(id: number): Promise<UserDto | null> {
+  async findById(id: number): Promise<User | null> {
     const data = await AppDataSource.manager.findOne(User, {
       where: {
         id: id
@@ -28,7 +28,7 @@ class UserRepository {
 
     if (!data) return null
 
-    return parseUserDto(data);
+    return;
   }
 
   async findByEmail(email: string): Promise<User | null> {

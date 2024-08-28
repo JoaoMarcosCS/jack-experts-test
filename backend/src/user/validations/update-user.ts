@@ -4,13 +4,13 @@ const UpdateUserSchema = z.object({
     // id: z.number({required_error: "ID do usuário é obrigatório"}).min(0),
 
     name: z.string()
-    .min(3, {message: "O nome precisa ter no mínimo três caracters"})
+    .min(3, {message: "Name must have at least three characters"})
     .optional(),
 
-    email: z.string().email("Insira um email válido").optional(),
+    email: z.string().email("Invalid email").optional(),
 
     password: z.string()
-    .min(6,{ message: "A senha precisa ter no mínimo seis caracteres"}).optional()
+    .min(6,{ message: "Password must have at least six characters"}).optional()
 
 })
 
