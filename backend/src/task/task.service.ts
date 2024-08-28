@@ -1,8 +1,6 @@
 import userRepository from "../user/user.repository";
 import taskRepository from "./task.repository";
 import { UpdateTaskDto } from "./validations/update-task";
-
-import { Task } from "../entities/task.entity";
 import { CreateTaskDto } from "./validations/create-task";
 
 class TaskService {

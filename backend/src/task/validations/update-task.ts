@@ -8,6 +8,8 @@ const UpdateTaskSchema = z.object({
 
     description: z.string().optional(),
 
+    isFavorite: z.boolean().optional()
+
 });
 
 type UpdateTaskDto = z.infer<typeof UpdateTaskSchema>;
