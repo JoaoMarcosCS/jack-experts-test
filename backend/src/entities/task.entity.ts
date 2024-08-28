@@ -18,4 +18,7 @@ export class Task {
 
     @ManyToOne(() => User, { cascade: true })
     user: User;
+
+    @Column({default: false})
+    isFavorite: boolean;
 }
