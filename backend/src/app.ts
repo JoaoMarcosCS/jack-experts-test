@@ -8,6 +8,7 @@ import { TaskRouters } from './task/task.routes';
 import cors from "cors"
 import swaggerUi from "swagger-ui-express"
 import { corsOptions } from './config/corsOptions';
+import swaggerDoc from "./swagger.json";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use("/api-doc", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 app.use(UserRouters);
 app.use(AuthRouters);
 app.use(TaskRouters);

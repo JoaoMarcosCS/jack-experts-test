@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "lib": ["es5", "es6"],
+    "lib": [
+      "es5",
+      "es6"
+    ],
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
@@ -11,6 +14,6 @@
     "sourceMap": true,
     "esModuleInterop": true,
     "baseUrl": ".",
-
+    "resolveJsonModule": true
   }
 }

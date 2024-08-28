@@ -1,1 +1,71 @@
-{}
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Jack Experts Test",
+        "description": "Esse é o backend requerido no teste técnico com a documentação dos endpoints",
+        "version": "1.0.0",
+        "contact": {
+            "name": "João Marcos",
+            "email": "jmcsjoaomarcos@gmail.com"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3001",
+            "description": "URL local"
+        }
+    ],
+    "paths": {
+        "/user": {
+            "post": {
+                "summary": "Cadastro de usuário",
+                "description": "Rota responsável por cadastrar umn usuário novo ",
+                "tags": [
+                    "User"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "name": "João Marcos",
+                                        "email": "jmcsjoaomarcos@gmail.com",
+                                        "password": "123456"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200":{}
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Nome do usuário"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "Email único que o usuário usará para autenticação"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "Senha que será criptografada e usada para autenticação"
+                    }
+                }
+            }
+        }
+    }
+}
