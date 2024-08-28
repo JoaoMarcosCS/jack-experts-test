@@ -29,6 +29,9 @@ class TaskRepository {
                 user: {
                     id: userId
                 }
+            },
+            order: {
+                createdAt: "desc"
             }
         })
 
