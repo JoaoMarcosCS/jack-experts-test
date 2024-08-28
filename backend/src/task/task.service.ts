@@ -7,15 +7,7 @@ import { CreateTaskDto } from "./validations/create-task";
 
 class TaskService {
     async create(data: CreateTaskDto) {
-        
-        const user = await userRepository.findById(data.userId);
-
-        // const task = new Task();
-
-        // task.description = data.description;
-        // task.title = data.title;
-        // task.user = user;
-
+    
         const result = await taskRepository.create(data);
 
         if (!result) throw new Error("Cannot create task");
@@ -26,6 +18,11 @@ class TaskService {
     async findByUserId(userId: number) {
         const result = await taskRepository.findByUserId(userId);
         return result
+    }
+
+    async findByTitle(userId: number, search: string){
+        const result = await taskRepository.findByTitle(userId, search);
+        return result;
     }
 
     async update(taskId: number, data: UpdateTaskDto) {

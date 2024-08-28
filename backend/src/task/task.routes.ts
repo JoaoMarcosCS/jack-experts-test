@@ -8,5 +8,6 @@ TaskRouters.get("/task/:userId", authenticateRequired, taskController.findByUser
 TaskRouters.post("/task", authenticateRequired, taskController.create);
 TaskRouters.delete('/task/:taskId', authenticateRequired, taskController.delete);
 TaskRouters.patch("/task/:taskId", authenticateRequired, taskController.update);
+TaskRouters.get('/search-task/:userId', taskController.findByTitle)
 
 export {TaskRouters};

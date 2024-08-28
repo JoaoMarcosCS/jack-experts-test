@@ -1,3 +1,4 @@
+import { Like } from "typeorm";
 import { AppDataSource } from "../database/config/data-source";
 import { Task } from "../entities/task.entity";
 import { CreateTaskDto } from "./validations/create-task";
@@ -23,6 +24,23 @@ class TaskRepository {
         return true;
     }
 
+    async findByTitle(userId: number, search: string) {
+
+        const data = await AppDataSource.manager.find(Task, {
+            where: {
+                title: Like(`%${search}%`),
+                user: {
+                    id: userId
+                }
+            },
+            order: {
+                createdAt: "desc"
+            }
+        })
+
+        return data
+    }
+
     async findByUserId(userId: number) {
         const data = await AppDataSource.manager.find(Task, {
             where: {
@@ -38,7 +56,7 @@ class TaskRepository {
         return data;
     }
 
-    async update(taskId:number, data: UpdateTaskDto) {
+    async update(taskId: number, data: UpdateTaskDto) {
 
         const command = await AppDataSource.manager.createQueryBuilder()
             .update(Task)

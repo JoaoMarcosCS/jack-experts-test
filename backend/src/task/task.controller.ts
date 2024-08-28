@@ -86,6 +86,25 @@ class TaskController {
             }
         }
     }
+
+    async findByTitle(req: Request, res: Response){
+        try {
+            const { userId } = req.params;
+            const { search } = req.body;
+
+            const result = await taskService.findByTitle(Number(userId), search);
+
+            return res.status(200).json({
+                tasks: result
+            });
+        } catch (error) {
+            if (error instanceof Error) {
+                return res.status(400).json({
+                    error: error.message
+                })
+            }
+        }
+    }
 }
 
 export default new TaskController()
