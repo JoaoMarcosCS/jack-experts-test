@@ -1,12 +1,12 @@
 import userService from "../user/user.service";
-import { AuthPayloadDto } from "./interfaces/auth-payload.dto";
+import { AuthRequestDto } from "./interfaces/auth-payload.dto";
 import * as bcrypt from "bcrypt";
 import { sign } from "jsonwebtoken"
 import { env } from "../environment/env";
 
 export class AuthService {
     
-    async signin(payload: AuthPayloadDto) {
+    async signin(payload: AuthRequestDto) {
         const existUser = await userService.findOneByEmail(payload.email)
 
         if (!existUser) throw new Error("User not found");
