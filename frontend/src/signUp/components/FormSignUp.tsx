@@ -1,25 +1,25 @@
-import { InputField } from "../styled"
+import { InputField, Label } from "../styled"
 
 export const FormSignUp = () => {
     return (
         <form className="">
-            <h1 className="">Cadastre-se já!</h1>
+            <h1 className="text-2xl font-bold">Cadastre-se já!</h1>
             <p className="">Crie sua conta gratuitamente no Tasks</p>
-            
+
             <InputField>
-                <label htmlFor="name">Nome</label>
+                <Label htmlFor="name">Nome</Label>
                 <input type="text" name="name" id="name" placeholder="João Marcos" />
             </InputField>
 
-            <div>
-                <label htmlFor="email">Email</label>
+            <InputField>
+                <Label htmlFor="email">Email</Label>
                 <input type="email" name="email" id="email" placeholder="jmcsjoaomarcos@gmail.cm" />
-            </div>
+            </InputField>
 
-            <div>
-                <label htmlFor="password">Senha</label>
+            <InputField>
+                <Label htmlFor="password">Password</Label>
                 <input type="password" name="password" id="password" />
-            </div>
+            </InputField>
 
             <div>
                 <button>Limpar campos</button>
