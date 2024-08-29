@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeUpdate, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./user.entity";
 
 @Entity()
@@ -24,4 +24,15 @@ export class Task {
 
     @Column({default: false})
     isFavorite: boolean;
+
+    @Column({ type: 'datetime', nullable: true })
+    completedAt: Date;
+
+    //dependencia do valo do status
+    @BeforeUpdate()
+    updateCompletedAt() {
+        if (this.status === 'completed') {
+            this.completedAt = new Date();
+        }
+    }
 }
