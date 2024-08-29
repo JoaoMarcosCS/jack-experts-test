@@ -1,12 +1,15 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { SignIn } from './components/SignIn';
+import { SignIn } from './pages/Signin';
 
 function App() {
   return (
     <Router>
       <Routes>
-      
+        <Route path="/signin" element={"signin"} />
+
+        <Route path="/login" element={"login"} />
+
         <Route path="/" element={<SignIn/>} />
 
         <Route path="/create" element={"Create"} />
@@ -19,7 +22,7 @@ function App() {
 
       </Routes>
     </Router>
-  );
+  )
 }
 
 export default App;
