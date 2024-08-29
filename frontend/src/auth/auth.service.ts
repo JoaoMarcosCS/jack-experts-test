@@ -7,9 +7,7 @@ const authSignin = async(bodyRequestAuth: BodyRequestAuth) => {
     
     const response = await api.post<TokenResponse>(endpointsApi.signIn, bodyRequestAuth);
 
-    console.log("BRUTO: " + response.data);
-
-    console.log("\n\n\nSTRINGFY" + JSON.stringify(response.data));
+    return response.data
 }
 
 export {authSignin};
