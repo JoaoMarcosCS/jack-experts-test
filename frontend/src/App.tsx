@@ -1,12 +1,13 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { SignIn } from './components/SignIn';
 
 function App() {
   return (
     <Router>
       <Routes>
       
-        <Route path="/" element={"Home"} />
+        <Route path="/" element={<SignIn/>} />
 
         <Route path="/create" element={"Create"} />
 
