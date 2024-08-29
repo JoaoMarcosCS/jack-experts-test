@@ -20,11 +20,16 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(cors({
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
+
 app.use("/api-doc", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 app.use(UserRouters);
 app.use(AuthRouters);
 app.use(TaskRouters);
-
-app.use(cors(corsOptions))
 
 export default app;
