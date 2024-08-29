@@ -8,7 +8,9 @@ const UpdateTaskSchema = z.object({
 
     description: z.string().optional(),
 
-    isFavorite: z.boolean().optional()
+    isFavorite: z.boolean().optional(),
+
+    status: z.string().optional()
 
 });
 
