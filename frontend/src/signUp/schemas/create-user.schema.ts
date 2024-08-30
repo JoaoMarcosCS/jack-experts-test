@@ -4,4 +4,4 @@ export const CreateUserSchema = z.object({
 
 })
 
-export
+export type CreateUserProps = z.infer<typeof CreateUserSchema>
