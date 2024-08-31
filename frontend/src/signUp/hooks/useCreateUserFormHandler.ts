@@ -13,7 +13,10 @@ export const useCreateUserFormHandlers = () => {
     const {mutate, isSuccess, isError} = useCreateUserMutate();
 
     const handleCreateUser = (data: CreateUserProps) => {
-        // mutate(data)
+        console.log("Data do form\n\n" + JSON.stringify(data) + '\n\n');
+        
+        mutate(data)
+        
     }
 
     return {
