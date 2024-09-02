@@ -5,11 +5,6 @@ export interface ErrorObject {
     error: string;
 }
 
-// export interface ErrorState {
-//     error: ErrorObject  | null;
-//     setError: (error: ErrorObject  | null) => void;
-// }
-
 export const useUserStore = create<UserStore>((set) => {
     return {
         user: null,
@@ -21,10 +16,3 @@ export const useUserStore = create<UserStore>((set) => {
         }))
     }
 })
-
-// export const useErrorState = create<ErrorState>((set) => {
-//     return {
-//         error: null,
-//         setError: (error: ErrorObject | null) => set({ error }),
-//     }
-// })
