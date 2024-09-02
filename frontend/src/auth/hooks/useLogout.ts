@@ -1,3 +1,4 @@
+import { removeTokenFromHeader } from "../../utils/remove-token-from-header";
 import { useUserStore } from "../../store/user.store";
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +8,7 @@ export const useLogout = () => {
 
     const handleLogout = () => {
         removeUser();
+        removeTokenFromHeader();
         navigate("/signin");
     };
 
