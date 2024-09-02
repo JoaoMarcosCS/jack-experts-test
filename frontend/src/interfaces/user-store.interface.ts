@@ -8,5 +8,5 @@ export interface UserState {
 export interface UserStore {
     user: UserState | null,
     updateUser: (user: UserState) => void;
-    removeUser: (user: UserState) => void
+    removeUser: () => void
 }

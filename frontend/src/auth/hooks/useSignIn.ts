@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 export function useSignIn() {
 
-    const {updateUser} = useUserStore();
+    const { updateUser } = useUserStore();
     const navigate = useNavigate()
 
     const mutate = useMutation({
@@ -21,7 +21,7 @@ export function useSignIn() {
         onSuccess: (data: FetchTokenResponse) => {
 
             const decodedToken = jwtDecode<TokenPayload>(data.accessToken!);
-            const {name, email, id} = decodedToken;
+            const { name, email, id } = decodedToken;
 
             updateUser({
                 accessToken: data.accessToken,
