@@ -3,7 +3,7 @@ import { useMutation } from "react-query";
 import { CreateUserService } from "../services/create-user.service";
 import { useNavigate } from "react-router-dom"
 import { toast } from "sonner";
-import { getApiMessageError } from "../../utils/getApiMessageError";
+import { getApiMessageError } from "../../utils/get-api-message-error";
 
 
 export function useCreateUserMutate(){
