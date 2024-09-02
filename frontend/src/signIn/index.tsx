@@ -2,7 +2,6 @@ import { Logo, SecondaryText, TextMuted, Title } from "../components/Typography/
 import { Button } from "../components/ui/button"
 import { Link } from "react-router-dom"
 import { ButtonField, Form, Input, InputField, Label, LabelError } from "../components/Form/styled"
-// import { useErrorState } from "../store/user.store"
 import { Content, Nav, Section } from "./styled"
 import { useSignIn } from "@/auth/hooks/useSignIn"
 import { useSignInUserFormHandler } from "./hooks/useSignInUserFormHandler"
@@ -12,7 +11,6 @@ export const SignIn = () => {
 
     const { register, errors, handleSubmit, handleSignInUser, isLoading } = useSignInUserFormHandler();
     
-    // const { error } = useErrorState()
     return (
         <Section>
             <Nav>

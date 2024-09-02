@@ -4,13 +4,11 @@ import { Link } from "react-router-dom"
 import { ButtonField, Form, Input, InputField, Label, LabelError } from "../components/Form/styled"
 import { Content, Nav, Section } from "./styled"
 import { useCreateUserFormHandlers } from "./hooks/useCreateUserFormHandler"
-// import { useErrorState } from "../store/user.store"
 import { Loader2 } from "lucide-react"
 
 export const SignUp = () => {
 
     const { register, errors, handleSubmit, handleCreateUser, isError, isLoading } = useCreateUserFormHandlers();
-    // const { error } = useErrorState()
     return (
         <Section>
             <Nav>
