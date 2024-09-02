@@ -4,7 +4,7 @@ import { SignUp } from './signUp';
 import { SignIn } from './signIn';
 import { Toaster } from 'sonner';
 import { AuthGuard } from './auth/AuthGuard';
-import { Home } from './Home';
+import { Home } from './home';
 import { RootLayout } from './components/Layout';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={
             <AuthGuard>
               <RootLayout>
-                <Home/>
+                <Home />
               </RootLayout>
             </AuthGuard>
           } />
