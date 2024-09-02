@@ -21,4 +21,6 @@ export const SecondaryText = styled.p`
 export const Logo = styled.h1`
     font-size: 3rem;
     font-weight: 700;
+    --tw-text-opacity: 1;
+    color:rgb(251 191 36 / var(--tw-text-opacity));
 `

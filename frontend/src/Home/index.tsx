@@ -1,6 +1,6 @@
 export const Home = () => {
  
     return (
-        <>Home</>
+        <>Home home <br /> home</>
     );
 }
