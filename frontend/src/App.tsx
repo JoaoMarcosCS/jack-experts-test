@@ -5,6 +5,7 @@ import { SignIn } from './signIn';
 import { Toaster } from 'sonner';
 import { AuthGuard } from './auth/AuthGuard';
 import { Home } from './Home';
+import { RootLayout } from './components/Layout';
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
 
           <Route path="/" element={
             <AuthGuard>
-              <Home />
+              <RootLayout>
+                <Home/>
+              </RootLayout>
             </AuthGuard>
           } />
 
