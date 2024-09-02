@@ -1,24 +1,25 @@
 import { AxiosError } from "axios";
 import { useMutation } from "react-query";
 import { CreateUserService } from "../services/create-user.service";
-import { ErrorObject, useErrorState } from "../../store/user.store";
 import { useNavigate } from "react-router-dom"
+import { toast } from "sonner";
+import { getApiMessageError } from "../../utils/getApiMessageError";
 
 
 export function useCreateUserMutate(){
     
-    const { setError } = useErrorState();
     const navigate = useNavigate()
 
     const mutate = useMutation({
         mutationFn: CreateUserService,
         onSuccess:(data: any) => {
             console.log("Response success: \n\n" + JSON.stringify(data));
-            navigate("/signup");
+            toast.success("Usuário criado com sucesso!");
+            navigate("/signin");
         },
         onError:(error: AxiosError) => {
             console.log("Response error\n\n: " + JSON.stringify(error.response?.data))
-            setError(error.response?.data as ErrorObject);
+            toast.error(`${getApiMessageError(error)}`);
         }
     })
 

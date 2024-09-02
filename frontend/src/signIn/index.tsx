@@ -2,16 +2,17 @@ import { Logo, SecondaryText, TextMuted, Title } from "../components/Typography/
 import { Button } from "../components/ui/button"
 import { Link } from "react-router-dom"
 import { ButtonField, Form, Input, InputField, Label, LabelError } from "../components/Form/styled"
-import { useErrorState } from "../store/user.store"
+// import { useErrorState } from "../store/user.store"
 import { Content, Nav, Section } from "./styled"
 import { useSignIn } from "@/auth/hooks/useSignIn"
 import { useSignInUserFormHandler } from "./hooks/useSignInUserFormHandler"
+import { Loader2 } from "lucide-react"
 
 export const SignIn = () => {
 
-    const { register, errors, handleSubmit, handleSignInUser, isError } = useSignInUserFormHandler();
+    const { register, errors, handleSubmit, handleSignInUser, isLoading } = useSignInUserFormHandler();
     
-    const { error } = useErrorState()
+    // const { error } = useErrorState()
     return (
         <Section>
             <Nav>
@@ -20,11 +21,6 @@ export const SignIn = () => {
             <Form className="shadow-lg" onSubmit={handleSubmit(handleSignInUser)}>
                 <Title className="text-2xl font-bold">Faça login!</Title>
                 <SecondaryText className="font-medium text-amber-400">Faça login para acessar suas tarefas</SecondaryText>
-                {
-                    error &&
-                    (<LabelError>{error.error}</LabelError>)
-
-                }
                 <InputField>
                     <Label htmlFor="email">Email</Label>
                     <Input type="email" id="email" placeholder="jmcsjoaomarcos@gmail.com" {...register("email")} />
@@ -39,7 +35,13 @@ export const SignIn = () => {
 
                 <ButtonField>
                     <Button type="reset" variant={"outline"} className="border-none">Limpar dados</Button>
-                    <Button type="submit" className="bg-amber-400 text-base">Login</Button>
+                    <Button type="submit" className="bg-amber-400 text-base">
+                    {isLoading ? (
+                            <Loader2 className="animate-spin"/>
+                        ) : (
+                            "Login"
+                        )}
+                    </Button>
                 </ButtonField>
 
                 <Content align="center">

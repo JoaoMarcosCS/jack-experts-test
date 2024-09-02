@@ -10,7 +10,7 @@ export const useCreateUserFormHandlers = () => {
         reValidateMode: "onChange"
     })
 
-    const {mutate, isSuccess, isError} = useCreateUserMutate();
+    const {mutate, isSuccess, isError, isLoading} = useCreateUserMutate();
 
     const handleCreateUser = (data: CreateUserProps) => {
         console.log("Data do form\n\n" + JSON.stringify(data) + '\n\n');
@@ -25,6 +25,7 @@ export const useCreateUserFormHandlers = () => {
         isSubmitting,
         handleSubmit,
         mutate,
+        isLoading,
         isSuccess,
         isError,
         handleCreateUser

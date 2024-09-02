@@ -10,7 +10,7 @@ export const useSignInUserFormHandler = () => {
         reValidateMode: "onChange"
     })
 
-    const {mutate, isSuccess, isError} = useSignIn();
+    const {mutate, isSuccess, isError, isLoading} = useSignIn();
 
     const handleSignInUser = (data: SignInUserProps) => {
         console.log("Data do form\n\n" + JSON.stringify(data) + '\n\n');
@@ -23,6 +23,7 @@ export const useSignInUserFormHandler = () => {
         register,
         errors,
         isSubmitting,
+        isLoading,
         handleSubmit,
         mutate,
         isSuccess,

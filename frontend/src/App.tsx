@@ -2,9 +2,11 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SignUp } from './signUp';
 import { SignIn } from './signIn';
+import { Toaster } from 'sonner';
 
 function App() {
   return (
+    <>
     <Router>
       <Routes>
         <Route path="/signin" element={<SignIn/>} />
@@ -23,6 +25,8 @@ function App() {
 
       </Routes>
     </Router>
+    <Toaster/>
+    </>
   )
 }
 

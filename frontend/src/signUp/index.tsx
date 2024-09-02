@@ -4,12 +4,13 @@ import { Link } from "react-router-dom"
 import { ButtonField, Form, Input, InputField, Label, LabelError } from "../components/Form/styled"
 import { Content, Nav, Section } from "./styled"
 import { useCreateUserFormHandlers } from "./hooks/useCreateUserFormHandler"
-import { useErrorState } from "../store/user.store"
+// import { useErrorState } from "../store/user.store"
+import { Loader2 } from "lucide-react"
 
 export const SignUp = () => {
 
-    const { register, errors, handleSubmit, handleCreateUser, isError } = useCreateUserFormHandlers();
-    const { error } = useErrorState()
+    const { register, errors, handleSubmit, handleCreateUser, isError, isLoading } = useCreateUserFormHandlers();
+    // const { error } = useErrorState()
     return (
         <Section>
             <Nav>
@@ -18,11 +19,6 @@ export const SignUp = () => {
             <Form className="shadow-lg" onSubmit={handleSubmit(handleCreateUser)}>
                 <Title className="text-2xl font-bold">Cadastre-se já!</Title>
                 <SecondaryText className="font-medium text-amber-400">Crie sua conta gratuitamente no Tasks</SecondaryText>
-                {
-                    error &&
-                    (<LabelError>{error.error}</LabelError>)
-
-                }
                 <InputField>
                     <Label htmlFor="name">Nome</Label>
                     <Input type="text" id="name" placeholder="João Marcos" {...register("name")} />
@@ -43,7 +39,13 @@ export const SignUp = () => {
 
                 <ButtonField>
                     <Button type="reset" variant={"outline"} className="border-none">Limpar dados</Button>
-                    <Button type="submit" className="bg-amber-400 text-base">Cadastrar</Button>
+                    <Button type="submit" className="bg-amber-400 text-base">
+                        {isLoading ? (
+                            <Loader2 className="animate-spin"/>
+                        ) : (
+                            "Cadastrar"
+                        )}
+                    </Button>
                 </ButtonField>
 
                 <Content align="center">
