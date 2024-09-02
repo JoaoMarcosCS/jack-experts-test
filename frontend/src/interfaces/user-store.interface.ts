@@ -2,7 +2,7 @@ export interface UserState {
     name: string ,
     id: number,
     email: string,
-    isLoggedIn: boolean;
+    accessToken: boolean;
 }
 
 export interface UserStore {

@@ -1,18 +1,21 @@
-import { UserStore } from "../interfaces/user-store.interface"
-import { create } from "zustand"
+import { UserStore } from "../interfaces/user-store.interface";
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-export interface ErrorObject {
-    error: string;
+export interface ErrorObject { 
+  error: string; 
 }
 
-export const useUserStore = create<UserStore>((set) => {
-    return {
-        user: null,
-        updateUser: (user) => set((state) => ({
-            user: user
-        })),
-        removeUser: (user) => set((state) => ({
-            user: null
-        }))
+export const useUserStore = create<UserStore>()(
+  persist(
+    (set) => ({
+      user: null,
+      updateUser: (user) => set(() => ({ user })),
+      removeUser: () => set(() => ({ user: null })),
+    }),
+    {
+      name: "user-store", // nome da chave no armazenamento
+      getStorage: () => localStorage, // você pode trocar para sessionStorage ou outro armazenamento
     }
-})
+  )
+);
