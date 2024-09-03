@@ -1,20 +1,27 @@
-import { Task } from "src/entities/task.entity";
-import { User } from "src/entities/user.entity";
-import { generateHash } from "src/utils/generateHash";
+import { Task } from "../../entities/task.entity";
+import { User } from "../../entities/user.entity";
+import { generateHash } from "../../utils/generateHash";
 import { AppDataSource } from "../config/data-source";
 
 export const seeder = async () => {
-    
+    console.log("Iniciando seed\n\n")
     const taskRepository = AppDataSource.getRepository(Task);
     const userRepository = AppDataSource.getRepository(User);
 
     const user1 = new User();
-    user1.email = "rodrigo@gmail.com";
-    user1.name = "Rodrigo Ribas";
+    user1.email = "jmcsjoaomarcos@gmail.com";
+    user1.name = "João Marcos";
     user1.password = await generateHash("123456");
     await userRepository.save(user1);
 
     const favoriteStates = [false, true];
+
+    // const task = new Task();
+
+    // task.title = "Fazer janta";
+    // task.description = "Fritar frango, esquentar arroz, cozinhar feijão e preparar suco de laranja";
+    // task.user = user1;
+    // task.isFavorite = true;
 
     const tasks = [
         {
@@ -151,7 +158,7 @@ export const seeder = async () => {
         }
     ];
 
-    await taskRepository.save(tasks);
+    await AppDataSource.createQueryBuilder().insert().into(Task).values(tasks).execute();
 
-    console.log("Tarefas inseridas com sucesso.");
+    console.log("\n\nSeed finalizado\n\n");
 };

@@ -9,6 +9,7 @@ import cors from "cors"
 import swaggerUi from "swagger-ui-express"
 import { corsOptions } from './config/corsOptions';
 import swaggerDoc from "./swagger.json";
+import { seeder } from './database/seeds/seeder';
 
 dotenv.config();
 
@@ -31,5 +32,7 @@ app.use("/api-doc", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 app.use(UserRouters);
 app.use(AuthRouters);
 app.use(TaskRouters);
+
+// seeder();
 
 export default app;

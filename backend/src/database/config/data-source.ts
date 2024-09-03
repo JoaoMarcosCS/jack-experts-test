@@ -1,5 +1,6 @@
 
 import { DataSource } from "typeorm"
+import { seeder } from "../seeds/seeder";
 
 export const AppDataSource = new DataSource({
     type: "sqlite",
@@ -11,7 +12,8 @@ export const AppDataSource = new DataSource({
 
 AppDataSource.initialize()
     .then(() => {
-        console.log("Database connected")
+        console.log("Database connected");
+        seeder();
     })
     .catch((err) => {
         console.error("Database disconnected: ", err)
