@@ -1,14 +1,15 @@
-import { useUserStore } from "@/store/user.store";
+import { Task } from "../../interfaces/task.interface";
 import { api } from "../../services/axios";
 import { endpointsApi } from "../../utils/endpoints";
+import { FetchTasksParams } from "../interfaces/fetch-tasks-params";
 
-const fetchTasksByUserId = async() => {
-    const userId = useUserStore((state) => state.user?.id)
+interface FetchTasksResponse{
+    tasks: Task[]
+}
 
-    const response = await api.get(`${endpointsApi.task}/${userId}`);
+const fetchTasksByUserId = async({userId}: FetchTasksParams) => {
 
-    console.log(`BRUTO: ${JSON.stringify(response)}`)
-    console.log(`DATA: ${JSON.stringify(response.data)}`)
+    const response = await api.get<FetchTasksResponse>(`${endpointsApi.task}/${userId}`);
     return response.data
 }
 

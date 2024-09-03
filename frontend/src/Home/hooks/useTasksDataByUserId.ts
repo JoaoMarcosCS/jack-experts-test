@@ -3,12 +3,11 @@ import { fetchTasksByUserId } from "../services/fetch-tasks-by-userId.service"
 import { FetchTasksParams } from "../interfaces/fetch-tasks-params"
 
 
-export function useTasksDataByUserId({userId} : FetchTasksParams) {
+export function useTasksDataByUserId({userId}: FetchTasksParams) {
   const query = useQuery({
-    queryFn: fetchTasksByUserId,
-    queryKey: ["user-tasks"],
+    queryFn: () => fetchTasksByUserId({userId}),
+    queryKey: ["user-tasks", {userId}],
     refetchOnWindowFocus:true,
-    enabled: !!userId
   })
 
   return query
