@@ -20,16 +20,16 @@ export const SideMenu = () => {
                 <NavigationItem direction="right" href="/" text="Home">
                     <House /> Home
                 </NavigationItem>
-                <NavigationItem direction="right" href="/" text="Procurar">
+                <NavigationItem direction="right" href="/search" text="Procurar">
                     <Search /> Procurar
                 </NavigationItem>
-                <NavigationItem direction="right" href="/" text="Criar">
+                <NavigationItem direction="right" href="/create" text="Criar">
                     <CirclePlus /> Criar
                 </NavigationItem>
-                <NavigationItem direction="right" href="/" text="Favoritos">
+                <NavigationItem direction="right" href="/favorites" text="Favoritos">
                     <Star /> Favoritos
                 </NavigationItem>
-                <NavigationItem direction="right" href="/" text="Perfil">
+                <NavigationItem direction="right" href="/profile" text="Perfil">
                     <CircleUserRound /> Perfil
                 </NavigationItem>
             </ul>
