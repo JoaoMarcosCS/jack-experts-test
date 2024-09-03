@@ -17,7 +17,7 @@ interface MenuItemProps{
 export const NavigationItem = ({children, href, text, direction}: MenuItemProps) => {
     
     return(
-        <TooltipProvider>
+        <TooltipProvider delayDuration={200}>
         <Tooltip>
           <TooltipTrigger asChild>
             <Link to={href}
