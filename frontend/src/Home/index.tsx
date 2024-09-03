@@ -1,3 +1,4 @@
+import CardSkeleton from "../components/Cards/CardSkeleton";
 import { CardTask } from "../components/Cards/CardTask";
 import { SecondaryText, Title } from "../components/Typography/styled";
 import { useUserStore } from "../store/user.store";
@@ -19,7 +20,17 @@ export const Home = () => {
 
             <div className="flex w-full justify-center items-center gap-4 flex-wrap">
                 {isLoading && (
-                <p>Estamos carregando suas informações</p>
+                <>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                    <CardSkeleton/>
+                </>
                 )}
                 { !isLoading && data && (
                     <>
