@@ -1,6 +1,12 @@
 import { BeforeUpdate, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./user.entity";
 
+
+enum Status {
+    OPEN = 'open',
+    COMPLETED = 'completed',
+  }
+
 @Entity()
 export class Task {
 
@@ -19,8 +25,8 @@ export class Task {
     @ManyToOne(() => User, { cascade: true })
     user: User;
 
-    @Column({default: "open"})
-    status: string;
+    @Column({type: 'enum', enum: Status, default: Status.OPEN})
+    status: Status;
 
     @Column({default: false})
     isFavorite: boolean;
