@@ -4,10 +4,12 @@ import { SignUp } from './signUp';
 import { SignIn } from './signIn';
 import { Toaster } from 'sonner';
 import { AuthGuard } from './auth/AuthGuard';
-import { Home } from './home';
 import { RootLayout } from './components/Layout';
+import { Home } from './home';
+import { NotFound } from './notFound';
 
 function App() {
+
   return (
     <>
       <Router>
@@ -19,7 +21,7 @@ function App() {
           <Route path="/" element={
             <AuthGuard>
               <RootLayout>
-                <Home />
+                <Home/>
               </RootLayout>
             </AuthGuard>
           } />
@@ -32,6 +34,7 @@ function App() {
 
           <Route path="/favorites" element={"Favorites"} />
 
+          <Route path='*' element={<NotFound/>}/>
         </Routes>
       </Router>
       <Toaster />
