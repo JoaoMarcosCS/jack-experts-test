@@ -1,6 +1,7 @@
 import { ReactNode, useEffect } from "react";
 import { useUserStore } from "../store/user.store"
 import { useNavigate } from "react-router-dom";
+import { addTokenToHeader } from "../utils/add-token-to-header";
 
 interface AuthGuardProps {
     children: ReactNode;
@@ -16,6 +17,8 @@ export const AuthGuard = ({ children }: AuthGuardProps) => {
         if (!accessToken || accessToken == undefined) {
             navigate("/signin");
         }
+
+        addTokenToHeader(accessToken!);
     }, [])
 
     return (
