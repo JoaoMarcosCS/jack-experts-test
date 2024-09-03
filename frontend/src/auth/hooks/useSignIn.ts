@@ -32,6 +32,7 @@ export function useSignIn() {
 
             addTokenToHeader(data.accessToken!);
 
+            
             toast.info(`Bem-vindo ${name}`);
 
             navigate("/");

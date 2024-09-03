@@ -13,10 +13,7 @@ export const useSignInUserFormHandler = () => {
     const {mutate, isSuccess, isError, isLoading} = useSignIn();
 
     const handleSignInUser = (data: SignInUserProps) => {
-        console.log("Data do form\n\n" + JSON.stringify(data) + '\n\n');
-        
         mutate(data)
-        
     }
 
     return {
