@@ -4,7 +4,6 @@ import { ButtonField, Form, Input, InputField, Label, LabelError } from "../comp
 import { Section } from "../signUp/styled"
 import { Loader2 } from "lucide-react"
 import { useCreateTaskFormHandler } from "../tasks/hooks/useCreateTaskFormHandler"
-import { api } from "../services/axios"
 
 export const CreateTask = () => {
 
