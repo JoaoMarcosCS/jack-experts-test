@@ -28,7 +28,7 @@ class UserRepository {
 
     if (!data) return null
 
-    return;
+    return data;
   }
 
   async findByEmail(email: string): Promise<User | null> {
