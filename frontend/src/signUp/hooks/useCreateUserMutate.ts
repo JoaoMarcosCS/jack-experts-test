@@ -13,12 +13,10 @@ export function useCreateUserMutate(){
     const mutate = useMutation({
         mutationFn: CreateUserService,
         onSuccess:(data: any) => {
-            console.log("Response success: \n\n" + JSON.stringify(data));
             toast.success("Usuário criado com sucesso!");
             navigate("/signin");
         },
         onError:(error: AxiosError) => {
-            console.log("Response error\n\n: " + JSON.stringify(error.response?.data))
             toast.error(`${getApiMessageError(error)}`);
         }
     })
