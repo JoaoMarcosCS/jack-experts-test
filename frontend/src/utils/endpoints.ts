@@ -2,5 +2,6 @@ export const endpointsApi = {
     signIn: "/signin",
     user: "/user",
     task: "/task",
-    searchTask: "/search-task"
+    searchTask: "/search-task",
+    favorites: "/favorites"
 }
