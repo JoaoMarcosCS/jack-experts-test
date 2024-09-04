@@ -1,8 +1,8 @@
+import { useTasksDataByUserId } from "../tasks/hooks/useTasksDataByUserId";
 import CardSkeleton from "../components/Cards/CardSkeleton";
 import { CardTask } from "../components/Cards/CardTask";
 import { SecondaryText, Title } from "../components/Typography/styled";
 import { useUserStore } from "../store/user.store";
-import { useTasksDataByUserId } from "./hooks/useTasksDataByUserId";
 
 export const Home = () => {
 
