@@ -10,7 +10,7 @@ export interface SetTaskAsCompletedResponse{
 }
 
 export const setTaskAsCompleted = async ({taskId}: SetTaskAsCompletedParams) => {
-    const response = await api.patch<SetTaskAsCompletedResponse>(`${endpointsApi.task}/${taskId}`, {completed: true});
+    const response = await api.patch<SetTaskAsCompletedResponse>(`${endpointsApi.task}/${taskId}`, {status: "completed"});
 
     return response.data;
 }

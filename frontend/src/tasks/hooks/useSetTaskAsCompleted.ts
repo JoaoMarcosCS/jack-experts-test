@@ -13,10 +13,9 @@ export function useSetTaskAsCompleted() {
         mutationFn: setTaskAsCompleted,
 
         onSuccess: (data: SetTaskAsCompletedResponse) => {
-            if(data.ok){
                 toast.success("Tarefa marcada como concluida");
                 queryClient.invalidateQueries();
-            }
+
         },
         onError: (error: AxiosError) => {
             toast.error(`${getApiMessageError(error)}`);

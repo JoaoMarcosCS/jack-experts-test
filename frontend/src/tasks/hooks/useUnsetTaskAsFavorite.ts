@@ -13,10 +13,8 @@ export function useUnsetTaskAsFavorite() {
         mutationFn: unsetTaskAsFavorite,
 
         onSuccess: (data: UnsetTaskAsFavoriteResponse) => {
-            if(data.ok){
                 toast.success("Tarefa desmarcada como favorita");
                 queryClient.invalidateQueries();
-            }
         },
         onError: (error: AxiosError) => {
             toast.error(`${getApiMessageError(error)}`);
