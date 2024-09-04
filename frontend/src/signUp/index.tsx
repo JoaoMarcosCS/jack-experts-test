@@ -39,7 +39,7 @@ export const SignUp = () => {
                     <Button type="reset" variant={"outline"} className="border-none">Limpar dados</Button>
                     <Button type="submit" className="bg-amber-400 text-base">
                         {isLoading ? (
-                            <Loader2 className="animate-spin"/>
+                            <Loader2 className="animate-spin" />
                         ) : (
                             "Cadastrar"
                         )}
