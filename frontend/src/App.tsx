@@ -9,6 +9,7 @@ import { Home } from './home';
 import { NotFound } from './notFound';
 import { CreateTask } from './createTask';
 import { Favorites } from './favorites';
+import { Profile } from './profile';
 
 function App() {
 
@@ -36,7 +37,13 @@ function App() {
             </AuthGuard>
           } />
 
-          <Route path="/profile" element={"Profile"} />
+          <Route path="/profile" element={
+               <AuthGuard>
+               <RootLayout>
+                 <Profile />
+               </RootLayout>
+             </AuthGuard>
+          } />
 
           <Route path="/search" element={"Search"} />
 
