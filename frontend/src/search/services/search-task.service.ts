@@ -1,4 +1,5 @@
-import { api } from "@/services/axios"
+import { Task } from "../../interfaces/task.interface";
+import { api } from "../../services/axios"
 import { endpointsApi } from "@/utils/endpoints"
 
 export interface SearchRequest{
@@ -6,6 +7,12 @@ export interface SearchRequest{
     search: string;
 }
 
+export interface SearchResponse{ 
+    tasks: Task[] | []
+}
+
 export const searchTask = async ({userId, search}: SearchRequest) => {
-    const response = await api.get(`${endpointsApi.searchTask}/${userId}`, {search})
+    const response = await api.post<SearchResponse>(`${endpointsApi.searchTask}/${userId}`, {search});
+
+    return response.data
 }
