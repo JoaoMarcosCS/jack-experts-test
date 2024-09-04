@@ -50,7 +50,7 @@ export const CardTask = ({ task }: CardTaskProps) => {
                     ">Criado em {format(task.createdAt, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}</p>
                 </div>
 
-                {task.isFavorite || favorite ? (
+                {favorite ? (
                     <Button variant={"outline"} className="border-none" onClick={() => {
                         unsetTaskAsFavortie({ taskId: task.id });
                         setFavorite(false);
