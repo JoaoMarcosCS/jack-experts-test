@@ -7,6 +7,8 @@ import { AuthGuard } from './auth/AuthGuard';
 import { RootLayout } from './components/Layout';
 import { Home } from './home';
 import { NotFound } from './notFound';
+import { CreateTask } from './createTask';
+import { Favorites } from './favorites';
 
 function App() {
 
@@ -21,20 +23,32 @@ function App() {
           <Route path="/" element={
             <AuthGuard>
               <RootLayout>
-                <Home/>
+                <Home />
               </RootLayout>
             </AuthGuard>
           } />
 
-          <Route path="/create" element={"Create"} />
+          <Route path="/create" element={
+            <AuthGuard>
+              <RootLayout>
+                <CreateTask />
+              </RootLayout>
+            </AuthGuard>
+          } />
 
           <Route path="/profile" element={"Profile"} />
 
           <Route path="/search" element={"Search"} />
 
-          <Route path="/favorites" element={"Favorites"} />
+          <Route path="/favorites" element={
+            <AuthGuard>
+              <RootLayout>
+                <Favorites />
+              </RootLayout>
+            </AuthGuard>
+          } />
 
-          <Route path='*' element={<NotFound/>}/>
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </Router>
       <Toaster />
