@@ -87,6 +87,24 @@ class TaskController {
         }
     }
 
+    async findOnlyFavorites(req: Request, res: Response) {
+        try {
+            const { userId } = req.params;
+
+            const result = await taskService.findOnlyFavorites(Number(userId));
+
+            return res.status(200).json({
+                tasks: result
+            });
+        } catch (error) {
+            if (error instanceof Error) {
+                return res.status(400).json({
+                    error: error.message
+                })
+            }
+        }
+    }
+
     async findByTitle(req: Request, res: Response){
         try {
             const { userId } = req.params;

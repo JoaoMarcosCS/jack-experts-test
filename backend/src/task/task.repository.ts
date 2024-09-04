@@ -56,6 +56,22 @@ class TaskRepository {
         return data;
     }
 
+    async findOnlyFavorites(userId: number) { 
+        const data = await AppDataSource.manager.find(Task, {
+            where: {
+                user: {
+                    id: userId
+                },
+                isFavorite:true
+            },
+            order: {
+                createdAt: "desc"
+            }
+        })
+
+        return data;
+    }
+
     async update(taskId: number, data: UpdateTaskDto) {
 
         const command = await AppDataSource.manager.createQueryBuilder()

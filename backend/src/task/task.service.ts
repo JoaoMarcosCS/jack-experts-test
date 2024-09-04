@@ -18,6 +18,11 @@ class TaskService {
         return result
     }
 
+    async findOnlyFavorites(userId: number) {
+        const result = await taskRepository.findOnlyFavorites(userId);
+        return result
+    }
+
     async findByTitle(userId: number, search: string){
         const result = await taskRepository.findByTitle(userId, search);
         return result;
