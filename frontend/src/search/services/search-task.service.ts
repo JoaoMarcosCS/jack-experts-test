@@ -1,6 +1,6 @@
 import { Task } from "../../interfaces/task.interface";
 import { api } from "../../services/axios"
-import { endpointsApi } from "@/utils/endpoints"
+import { endpointsApi } from "../../utils/endpoints"
 
 export interface SearchRequest{
     userId: number;
