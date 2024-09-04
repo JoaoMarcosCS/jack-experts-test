@@ -33,11 +33,15 @@ export const Home = () => {
                 </>
                 )}
                 { !isLoading && data && (
-                    <>
-                    {data.tasks.map((task) => (
-                        <CardTask key={task.id} task={task}/>
-                    ))}
-                    </>
+                     <>
+                     {data.tasks.length === 0 ? (
+                         <SecondaryText >Você não tem tarefas criadas ainda</SecondaryText>
+                     ) : (
+                         data.tasks.map((task) => (
+                             <CardTask key={task.id} task={task}/>
+                         ))
+                     )}
+                     </>
                 )}
             </div>
         </div>

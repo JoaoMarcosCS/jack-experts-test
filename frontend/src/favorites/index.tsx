@@ -35,9 +35,13 @@ export const Favorites = () => {
                 )}
                 { !isLoading && data && (
                     <>
-                    {data.tasks.map((task) => (
-                        <CardTask key={task.id} task={task}/>
-                    ))}
+                    {data.tasks.length === 0 ? (
+                         <SecondaryText >Você não tem tarefas marcadas como favoritas ainda</SecondaryText>
+                     ) : (
+                         data.tasks.map((task) => (
+                             <CardTask key={task.id} task={task}/>
+                         ))
+                     )}
                     </>
                 )}
             </div>
