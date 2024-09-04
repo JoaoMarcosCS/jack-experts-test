@@ -5,7 +5,7 @@ import { SignIn } from './signIn';
 import { Toaster } from 'sonner';
 import { AuthGuard } from './auth/AuthGuard';
 import { RootLayout } from './components/Layout';
-import { Home } from './Home';
+import { Home } from './home';
 import { NotFound } from './notFound';
 
 function App() {
