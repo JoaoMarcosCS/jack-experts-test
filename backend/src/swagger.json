@@ -55,13 +55,80 @@
                     }
                 }
             }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Retorna um usuário pelo ID",
+                "description": "Retorna um usuário pelo ID informado",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "ID do usuário",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário encontrado",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "user": {
+                                    "type": "null"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
+        "securitySchemes": {
+            "jwt": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
         "schemas": {
             "User": {
                 "type": "object",
                 "properties": {
+                    "id": {
+                        "type": "number",
+                        "description": "Id do usuário"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Nome do usuário"
