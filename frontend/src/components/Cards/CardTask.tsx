@@ -9,6 +9,7 @@ import { useUnsetTaskAsFavorite } from "../../tasks/hooks/useUnsetTaskAsFavorite
 import { useSetTaskAsCompleted } from "../../tasks/hooks/useSetTaskAsCompleted"
 import { useEffect, useState } from "react"
 import { useDeleteTask } from "../../tasks/hooks/useDeleteTask"
+import { CardUpdateTask } from "./CardUpdateTask"
 
 interface CardTaskProps {
     task: Task
@@ -82,7 +83,8 @@ export const CardTask = ({ task }: CardTaskProps) => {
                 <p className="text-base">{task.description}</p>
             </div>
 
-            <div className="w-full flex justify-end mt-4">
+            <div className="w-full flex justify-between mt-4">
+                <CardUpdateTask task={task}/>
                 {task.status === 'open'  ? (
                     <Button variant={"outline"} className="border-none gap-1" onClick={() => {
                         setTaskAsCompleted({ taskId: task.id });
