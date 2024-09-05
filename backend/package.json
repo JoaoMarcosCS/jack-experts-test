@@ -6,7 +6,6 @@
   "scripts": {
     "test": "jest --watch",
     "test:unit": "jest --watch --testPathPattern=unit",
-    "test:integration": "jest --watch --testPathPattern=integration",
     "dev": "nodemon --watch \"src/\" -r \"tsconfig-paths/register\" --exec \"ts-node src/server.ts\" -e ts --env-file .env"
   },
   "keywords": [],
@@ -17,7 +16,6 @@
     "@types/node": "^22.5.0",
     "@types/supertest": "^6.0.2",
     "jest": "^29.7.0",
-    "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
