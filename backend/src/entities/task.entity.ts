@@ -16,7 +16,7 @@ export class Task {
     @Column({ nullable: true })
     description: string;
 
-    @ManyToOne(() => User, { cascade: true })
+    @ManyToOne(() => User, { onDelete: 'CASCADE' })
     user: User;
 
     @Column({default: "open"})
@@ -25,14 +25,4 @@ export class Task {
     @Column({default: false})
     isFavorite: boolean;
 
-    @Column({ type: 'datetime', nullable: true })
-    completedAt: Date;
-
-    //dependencia do valo do status
-    @BeforeUpdate()
-    updateCompletedAt() {
-        if (this.status === 'completed') {
-            this.completedAt = new Date();
-        }
-    }
 }
