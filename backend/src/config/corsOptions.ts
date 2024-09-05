@@ -1,7 +1,6 @@
 const allowedOrigins = [
     'http://localhost:3000',
-    'http://example.com',
-    'https://another-domain.com'
+    'http://localhost:3001',//swagger API
 ];
 
 export const corsOptions = {
