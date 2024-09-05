@@ -4,12 +4,12 @@ import { getApiMessageError } from "../../utils/get-api-message-error";
 import { toast } from "sonner";
 import { QueryClient } from "@tanstack/react-query";
 import { UpdateUserResponse, updateUser } from "../services/update-user.service";
-import { useNavigate } from "react-router-dom";
+import { useLogout } from "../../auth/hooks/useLogout";
 
 export function useUpdateUser() {
 
     const queryClient = new QueryClient();
-    const navigate = useNavigate();
+    const { handleLogout } = useLogout()
 
     const mutate = useMutation({
         mutationFn: updateUser,
@@ -17,7 +17,7 @@ export function useUpdateUser() {
         onSuccess: (data: UpdateUserResponse) => {
             queryClient.invalidateQueries();
             toast.success("Informações alteradas com sucesso");
-            navigate("/");
+            handleLogout();
         },
         onError: (error: AxiosError) => {
             toast.error(`${getApiMessageError(error)}`);
