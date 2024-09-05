@@ -48,7 +48,17 @@
                             "application/json": {
                                 "schema": {
                                     "type": "boolean",
-                                    "description": "True para requisição bem feita e False para requisição mal-sucedida"
+                                    "description": "Usuário cadastrado com sucesso"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na validação dos dados",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
                                 }
                             }
                         }
@@ -110,8 +120,681 @@
                         }
                     }
                 }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Deleta um usuário pelo ID",
+                "description": "Deleta um usuário pelo ID informado",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "ID do usuário",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário deletado com sucesso",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "ok": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Atualiza um usuário pelo ID",
+                "description": "Atualiza um usuário pelo ID informado. Apenas os campos fornecidos no corpo da requisição serão atualizados.",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "ID do usuário",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "Nome do usuário",
+                                        "minLength": 3
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "description": "Email do usuário",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "description": "Senha do usuário",
+                                        "minLength": 6
+                                    }
+                                },
+                                "required": [],
+                                "example": {
+                                    "name": "João Marcos",
+                                    "email": "jmcsjoaomarcos@gmail.com",
+                                    "password": "newpassword123"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "jwt": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro na validação dos dados",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
             }
-        }
+        },
+        "/task/{userId}": {
+            "get": {
+              "summary": "Retorna as tarefas de um usuário",
+              "description": "Retorna todas as tarefas pertencentes a um usuário",
+              "tags": ["Task"],
+              "parameters": [
+                {
+                  "in": "path",
+                  "name": "userId",
+                  "description": "ID do usuário para pegar as tarefas pertencentes a ele",
+                  "required": true,
+                  "schema": {
+                    "type": "integer"
+                  }
+                }
+              ],
+              "security": [
+                {
+                  "jwt": []
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Tarefas encontradas",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "tasks": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/Task"
+                            }
+                          }
+                        }
+                      },
+                      "examples": {
+                        "tasks": {
+                          "value": {
+                            "tasks": [
+                              {
+                                "id": 1,
+                                "createdAt": "2024-09-05T16:44:51.000Z",
+                                "title": "Fazer janta",
+                                "description": "Fritar frango, esquentar arroz, cozinhar feijão e preparar suco de laranja",
+                                "status": "open",
+                                "isFavorite": false
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "404": {
+                  "description": "Nenhuma tarefa encontrada",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "tasks": {
+                            "type": "array",
+                            "items": {
+                              "type": "object"
+                            }
+                          }
+                        }
+                      },
+                      "examples": {
+                        "tasks": {
+                          "value": {
+                            "tasks": []
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+        "/task": {
+            "post": {
+              "summary": "Cria uma nova tarefa",
+              "description": "Cria uma nova tarefa para um usuário específico.",
+              "tags": ["Task"],
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "userId": {
+                          "type": "integer"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["userId", "title", "description"]
+                    },
+                    "examples": {
+                      "newTask": {
+                        "value": {
+                          "userId": 1,
+                          "title": "Fazer compras",
+                          "description": "Comprar leite, pão, e frutas"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "security": [
+                {
+                  "jwt": []
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Tarefa criada com sucesso",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/SuccessResponse"
+                      }
+                    }
+                  }
+                },
+                "400": {
+                  "description": "Erro na validação dos dados",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/ErrorResponse"
+                      },
+                      "examples": {
+                        "validationError": {
+                          "value": {
+                            "message": "O campo 'title' é obrigatório"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+        "/task/{taskId}":{
+            "delete": {
+                "summary": "Deleta uma tarefa",
+                "description": "Deleta uma tarefa específica.",
+                "tags": ["Task"],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "taskId",
+                    "description": "ID da tarefa a ser deletada",
+                    "required": true,
+                    "schema": {
+                      "type": "integer"
+                    }
+                  }
+                ],
+                "security": [
+                  {
+                    "jwt": []
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "Tarefa deletada com sucesso",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "Tarefa não encontrada",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponse"
+                          }
+                      }
+                    }
+                  }
+                }
+              },
+              "patch": {
+                "summary": "Atualiza uma tarefa",
+                "description": "Atualiza uma tarefa específica.",
+                "tags": ["Task"],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "taskId",
+                    "description": "ID da tarefa a ser atualizada",
+                    "required": true,
+                    "schema": {
+                      "type": "integer"
+                    }
+                  }
+                ],
+                "requestBody": {
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "title": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "examples": {
+                        "updateTask": {
+                          "value": {
+                            "title": "Novo título",
+                            "description": "Nova descrição"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "security": [
+                  {
+                    "jwt": []
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "Tarefa atualizada com sucesso",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/SuccessResponse"
+                        }
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "Tarefa não encontrada",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/ErrorResponse"
+                        },
+                        "examples": {
+                          "errorMessage": {
+                            "value": {
+                              "error": "Tarefa não encontrada"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "400": {
+                    "description": "Erro na validação dos dados",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "$ref": "#/components/schemas/ErrorResponse"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+        },
+        "/search-task/{userId}": {
+            "post": {
+              "summary": "Busca tarefas pelo título",
+              "description": "Busca tarefas de um usuário com base no título.",
+              "tags": ["Task"],
+              "parameters": [
+                {
+                  "in": "path",
+                  "name": "userId",
+                  "description": "ID do usuário cujas tarefas serão pesquisadas",
+                  "required": true,
+                  "schema": {
+                    "type": "integer"
+                  }
+                }
+              ],
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "search": {
+                          "type": "string",
+                          "description": "Representa o título da tarefa que você quer pesquisar"
+                        }
+                      },
+                      "required": ["title"]
+                    },
+                    "examples": {
+                      "searchTask": {
+                        "value": {
+                          "search": "Fazer compras"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "security": [
+                {
+                  "jwt": []
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Tarefas encontradas",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "tasks": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/Task"
+                            }
+                          }
+                        }
+                      },
+                      "examples": {
+                        "foundTasks": {
+                          "value": {
+                            "tasks": [
+                              {
+                                "id": 1,
+                                "createdAt": "2024-09-05T17:30:21.000Z",
+                                "userId": 1,
+                                "title": "Fazer compras",
+                                "description": "Comprar leite, pão, e frutas",
+                                "status": "open",
+                                "isFavorite": false
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "404": {
+                  "description": "Nenhuma tarefa encontrada",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "tasks": {
+                            "type": "array",
+                            "items": {
+                              "type": "object"
+                            }
+                          }
+                        }
+                      },
+                      "examples": {
+                        "noTasks": {
+                          "value": {
+                            "tasks": []
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/favorites/{userId}": {
+            "get": {
+              "summary": "Retorna as tarefas favoritas de um usuário",
+              "description": "Retorna todas as tarefas marcadas como favoritas de um usuário específico.",
+              "tags": ["Task"],
+              "parameters": [
+                {
+                  "in": "path",
+                  "name": "userId",
+                  "description": "ID do usuário cujas tarefas favoritas serão retornadas",
+                  "required": true,
+                  "schema": {
+                    "type": "integer"
+                  }
+                }
+              ],
+              "security": [
+                {
+                  "jwt": []
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Tarefas favoritas encontradas",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "tasks": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/Task"
+                            }
+                          }
+                        }
+                      },
+                      "examples": {
+                        "favoriteTasks": {
+                          "value": {
+                            "tasks": [
+                              {
+                                "id": 1,
+                                "createdAt": "2024-09-05T17:30:21.000Z",
+                                "title": "Fazer compras",
+                                "description": "Comprar leite, pão, e frutas",
+                                "status": "open",
+                                "isFavorite": true
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "404": {
+                  "description": "Nenhuma tarefa favorita encontrada",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "tasks": {
+                            "type": "array",
+                            "items": {
+                              "type": "object"
+                            }
+                          }
+                        }
+                      },
+                      "examples": {
+                        "noFavoriteTasks": {
+                          "value": {
+                            "tasks": []
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/signin": {
+            "post": {
+              "summary": "Autenticação de usuário",
+              "description": "Rota responsável por retornar um JWT a partir de um email e senha",
+              "tags": [
+                "Auth"
+              ],
+              "requestBody": {
+                "required": true,
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string",
+                          "description": "Email do usuário",
+                          "format": "email"
+                        },
+                        "password": {
+                          "type": "string",
+                          "description": "Senha do usuário",
+                          "minLength": 6
+                        }
+                      },
+                      "required": ["email", "password"],
+                      "example": {
+                        "email": "jmcsjoaomarcos@gmail.com",
+                        "password": "123456"
+                      }
+                    }
+                  }
+                }
+              },
+              "responses": {
+                "200": {
+                  "description": "Autenticação bem-sucedida",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "accessToken": {
+                            "type": "string",
+                            "description": "Token JWT para autenticação nas rotas protegidas"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "400": {
+                  "description": "Erro na autenticação",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/ErrorResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
     },
     "components": {
         "securitySchemes": {
@@ -140,6 +823,36 @@
                     "password": {
                         "type": "string",
                         "description": "Senha que será criptografada e usada para autenticação"
+                    }
+                }
+            },
+            "Task": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "description": "Id da tarefa"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "Título da tarefa"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Descrição da tarefa"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": ["open", "completed"],
+                        "description": "Status da tarefa podendo ser open ou completed"
+                    },
+                    "isFavorite":{
+                        "type": "boolean",
+                        "description": "Propriedade que diz se a terfa é favoritada ou não"
+                    },
+                    "createdAt":{
+                        "type": "string",
+                        "description": "A hora em que a tarefa foi criada"
                     }
                 }
             },
