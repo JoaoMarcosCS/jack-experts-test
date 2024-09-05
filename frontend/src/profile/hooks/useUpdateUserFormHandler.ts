@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useUserStore } from "../../store/user.store";
 import { UpdateUserProps, UpdateUserSchema } from "../schemas/update-user.schema";
 import { useUpdateUser } from "./useUpdateUser";
 import { User } from "../../interfaces/user.interface";
