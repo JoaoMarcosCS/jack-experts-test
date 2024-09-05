@@ -13,11 +13,7 @@ export const Search = () => {
     const userId = useUserStore((state) => state.user?.id)
 
     const {isLoading, data} = useSearchTask({userId: userId!, search: searchText});
-
-    useEffect(() => {
-        
-    }, [searchText])
-
+    
     return(
         <div className="w-full pl-2 flex flex-col">
             <div className="flex w-full justify-center items-center flex-col gap-4">
