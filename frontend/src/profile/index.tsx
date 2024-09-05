@@ -5,12 +5,16 @@ import { Section } from "../signUp/styled";
 import { useUserDataById } from "./hooks/useUserDataById";
 import { useUserStore } from "../store/user.store";
 import { CardUpdateProfile } from "./components/CardUpdateProfile";
+import { useDeleteUser } from "./hooks/useDeleteUser";
+import { Button } from "../components/ui/button";
 
 export const Profile = () => {
 
     const userId = useUserStore((state) => state.user?.id);
 
     const { data, isLoading } = useUserDataById({ id: userId! })
+
+    const {mutate, isLoading: isDeletingAccount} = useDeleteUser();
 
     return (
         <Section>
@@ -39,6 +43,18 @@ export const Profile = () => {
                     <div className="mt-6">
                         <TextMuted>Email</TextMuted>
                         <h1 className="text-2xl font-semibold">{data?.user.email}</h1>
+                    </div>
+
+                    <div className="mt-12 flex justify-center">
+                        <Button className="border-none text-xl text-red-500 font-semibold" variant={'outline'} onClick={() => {
+                            mutate({ id: userId! });
+                        }}>
+                            {isDeletingAccount ? (
+                                <Loader2 className="animate-spin" />
+                            ) : (
+                                "Deletar conta"
+                            )}
+                        </Button>
                     </div>
                 </div>
             )}
