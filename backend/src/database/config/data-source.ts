@@ -1,14 +1,17 @@
 
 import { DataSource } from "typeorm"
 import { seeder } from "../seeds/seeder";
+import { env } from "../../environment/env";
+
 
 export const AppDataSource = new DataSource({
-    type: "sqlite",
-    database: "db.sqlite",
+    type: "mysql",
+    // database: "db.sqlite",
+    url: env.DATABASE_URI,
     entities: ["src/entities/*{.ts,.js}*"],
     //configuração de ambiente de desenvolvimento
-    // synchronize: true,
-    // logging: true
+    synchronize: true,
+    logging: true
 })
 
 AppDataSource.initialize()
