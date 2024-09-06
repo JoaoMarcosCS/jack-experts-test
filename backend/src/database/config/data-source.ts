@@ -16,18 +16,8 @@ AppDataSource.initialize()
     .then(() => {
         console.log("Database connected");
 
-        const entityMetadatas = AppDataSource.entityMetadatas;
-        console.log("Entities loaded:", entityMetadatas.map(meta => meta.name));
-
-        const userEntity = entityMetadatas.find(meta => meta.name === "User");
-        if (userEntity) {
-            console.log("User entity loaded successfully");
-        } else {
-            console.error("User entity not found!");
-        }
-
         // Chame o seeder apenas no ambiente de desenvolvimento, se necessário
-        // seeder();
+        seeder();
     })
     .catch((err) => {
         console.error("Database disconnected: ", err);
