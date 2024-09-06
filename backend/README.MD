@@ -6,8 +6,6 @@
 
 <h1 align="center" style="font-weight: bold;">Backend</h1>
 
-<div style="display: flex; justify-content:center; gap:10px; flex-direction:row">
-
 ![NODEJS_BADGE]
 
 ![EXPRESS__BADGE]
@@ -16,7 +14,6 @@
 
 ![JSONWEBTOKEN_BADGE]
 
-</div>
 
 <h2>📑 Documentação dos endpoints</h2>
 Utilizei o Swagger para fazer a documentação dos endpoints, e pode ser vista na rota localhost:3001/api-doc. Nesta documentação também é possível disparar request para os endpoints. 

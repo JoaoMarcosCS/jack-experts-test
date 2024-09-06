@@ -11,7 +11,6 @@
 
 <h1 align="center" style="font-weight: bold;">Frontend</h1>
 
-<div style="display: flex; justify-content:center; gap:10px;">
 
 ![TYPESCRIPT__BADGE]
 
@@ -31,7 +30,7 @@
 
 ![JSONWEBTOKEN_BADGE]
 
-</div>
+
 
 <h2>📁Estrtura do projeto</h2>
 
