@@ -5,7 +5,7 @@ import { env } from "../../environment/env";
 export const AppDataSource = new DataSource({
     type: "mysql",
     url: env.DATABASE_URI,
-    entities: ["src/entities/*{.ts,.js}*"], // Verifique se esse caminho está correto
+    entities: ["../../entities/*{.ts,.js}*"], // Verifique se esse caminho está correto
     // synchronize: true, // Apenas para desenvolvimento
     logging: true // Para logar todas as queries
 });
