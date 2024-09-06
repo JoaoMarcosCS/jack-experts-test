@@ -6,7 +6,7 @@
 
 <h1 align="center" style="font-weight: bold;">Backend</h1>
 
-<div style="display: flex; justify-content:center; gap:10px;">
+<div style="display: flex; justify-content:center; gap:10px; flex-direction:row">
 
 ![NODEJS_BADGE]
 
