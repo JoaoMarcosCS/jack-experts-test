@@ -1,26 +1,14 @@
-[TYPESCRIPT__BADGE]: https://img.shields.io/badge/typescript-D4FAFF?style=for-the-badge&logo=typescript
-[JSONWEBTOKEN_BADGE]:https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens
-[ZOD_BADGE]:https://img.shields.io/badge/zod-%233068b7.svg?style=for-the-badge&logo=zod&logoColor=white
-[REACT_HOOK_FORM_BADGE]:https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white
-[REACT_QUERY_BADGE]:https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white
-[TAILWIND_BADGE]:https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white
-[STYLED_COMPONENTS]:https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white
-[ZUSTAND]:https://img.shields.io/badge/zustand-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB
-[REACT_ROUTER]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white 
-
-<h1 align="center" style="font-weight: bold;">Jack Experts Test</h1>
-
-<div style="display: flex; justify-content:center; gap:10px;">
 
 
-</div>
+<h1 align="center" style="font-weight: bold;">Teste Técnico da  Jack Experts</h1>
+
 
 <h2>🎯 Desafio</h2>
 O desafio do teste técnico para o estágio de desenvolvedor fullstack é desenvolver um
 Gerenciador de Tarefas usando ReactJS para o frontend e Node.Js no backend.
 
 <h2>💡 Solução</h2>
-O desafio foi concluido usando ReactJS para o frontend, NodeJS para o backend e Sqlite como base de dados. Veja as pastas `/backend` e `/frontend` para acessar o código e a explicação da estrutura de pastas
+O desafio foi concluido usando ReactJS para o frontend, NodeJS para o backend e Sqlite como base de dados. Veja as pastas <code>/backend</code> e <code>/frontend</code> para acessar o código e a explicação da estrutura de pastas
 
 
 <h2>🎨 Tecnologias do frontend</h2>

@@ -1,46 +1,105 @@
-# Getting Started with Create React App
+[TYPESCRIPT__BADGE]: https://img.shields.io/badge/typescript-D4FAFF?style=for-the-badge&logo=typescript
+[JSONWEBTOKEN_BADGE]:https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens
+[ZOD_BADGE]:https://img.shields.io/badge/zod-%233068b7.svg?style=for-the-badge&logo=zod&logoColor=white
+[REACT_HOOK_FORM_BADGE]:https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white
+[REACT_QUERY_BADGE]:https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white
+[TAILWIND_BADGE]:https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white
+[STYLED_COMPONENTS]:https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white
+[ZUSTAND]:https://img.shields.io/badge/zustand-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB
+[REACT_ROUTER]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<h1 align="center" style="font-weight: bold;">Frontend</h1>
 
-In the project directory, you can run:
+<div style="display: flex; justify-content:center; gap:10px;">
 
-### `npm start`
+![TYPESCRIPT__BADGE]
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![REACT_ROUTER]
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![REACT_HOOK_FORM_BADGE]
 
-### `npm test`
+![ZOD_BADGE]
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![REACT_QUERY_BADGE]
 
-### `npm run build`
+![TAILWIND_BADGE]
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![STYLED_COMPONENTS]
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![ZUSTAND]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![JSONWEBTOKEN_BADGE]
 
-### `npm run eject`
+</div>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<h2>📁Estrtura do projeto</h2>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+</br>
+</br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+ Eu optei por usar o padrão <strong>package by feature</strong> pois é mais escável e organizado, separando cada arquivo pela funcionalidade a que pertence, e não pela sua camada(controller, service). Entretanto, o padrão <strong> package by label</strong>, é indicado para projetos menores, e já utilizei em um projeto pessoal que pode ser visto acessando https://github.com/JoaoMarcosCS/JardimSaudeAPI.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+ 
+</br>
+</br>
 
-## Learn More
+<code>components.json</code>: arquivo de configuração do shadcn.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<code>src</code>: pasta que contém toda aplicação.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<code>src/auth</code>: módulo de autenticação, incluindo os hooks e serviços para autenticar o usuário e proteger as páginas.
+
+<code>src/components</code>: pasta onde contém os componentes do shadcn, componentes do layout e componentes reutilizaveis como <code>Title</code> e <code>SecondaryText</code>
+
+<code>src/createTask</code>: pasta que contém a página de criar tarefa. Os hooks, services, interfaces e schemas não estão nessa pasta pois estão no módulo de tasks, onde estão todas as funcionalidades relacionadas à entidade Task.
+
+
+<code>src/favorites</code>: contém a página de visualização das tarefas favoritadas.
+
+<code>src/home</code>: contém a página home da aplicação.
+
+<code>src/interfaces</code>: pasta genérica que contém as interfaces usadas em mais de um lugar da aplicação, como a <code>error-reponse.interface.ts</code>
+
+<code>src/lib</code>: contém o arquivo utilitário do shadcn.
+
+<code>src/notFound</code>: contém a página de not found.
+
+<code>src/profile</code>: contém, além da página de visualização do perfil, contém o módulo do usuário, com os hooks, services, schemas e interfaces para executar o CRUD do usuário.
+
+<code>src/search</code>: contém a página de procura de tasks e seu service e hook.
+
+<code>src/services</code>: pasta genérica que contém a configuração do axios para requisições
+
+<code>src/signIn</code>: contém a página de signIn e o hook para o formulário da página. O service para a rota /signIn da api está no módulo <code>src/auth</code>, junto com outros services e hooks pertencentes a funcionalidade de autenticação da aplicação.
+
+<code>src/signUp</code>: contém a página de signUp, os hooks e services para o CREATE do usuário.
+
+<code>src/store</code>: contém a configuração do estado do usuário.
+
+<code>src/tasks</code>: módulo para fazer as operações de CRUD da entidade Task.
+
+<code>src/utils</code>: contém as funções utilitárias que não pertencem a uma entidade especifica.
+
+<h2>▶️ Como excutar</h2>
+
+**Antes de executar o frontend, é necessário que o backend já esteja em execução**
+
+1) **Clone o repositório:**
+   ```bash
+   git clone https://github.com/JoaoMarcosCS/jack-experts-test.git
+
+2) **Entre no diretório do frontend:**
+    ```bash
+    cd frontend
+
+3) **Baixe as dependências:**
+    ```bash
+    npm i
+
+4) **Após baixar as dependências, execute o projeto:**
+    ```bash
+    npm run start
+
+ 
+
