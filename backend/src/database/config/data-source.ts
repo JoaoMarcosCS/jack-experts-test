@@ -1,25 +1,32 @@
-
-import { DataSource } from "typeorm"
+import { DataSource } from "typeorm";
 import { seeder } from "../seeds/seeder";
 import { env } from "../../environment/env";
 
-
 export const AppDataSource = new DataSource({
     type: "mysql",
-    // database: "db.sqlite",
     url: env.DATABASE_URI,
-    entities: ["src/entities/*{.ts,.js}*"],
-    //configuração de ambiente de desenvolvimento
-    // synchronize: true,
-    // logging: true
-})
+    entities: ["src/entities/*{.ts,.js}*"], // Verifique se esse caminho está correto
+    // synchronize: true, // Apenas para desenvolvimento
+    logging: true // Para logar todas as queries
+});
 
 AppDataSource.initialize()
     .then(() => {
         console.log("Database connected");
-        //configuração usada apenas no ambiente desenvolvimento
+
+        const entityMetadatas = AppDataSource.entityMetadatas;
+        console.log("Entities loaded:", entityMetadatas.map(meta => meta.name));
+
+        const userEntity = entityMetadatas.find(meta => meta.name === "User");
+        if (userEntity) {
+            console.log("User entity loaded successfully");
+        } else {
+            console.error("User entity not found!");
+        }
+
+        // Chame o seeder apenas no ambiente de desenvolvimento, se necessário
         // seeder();
     })
     .catch((err) => {
-        console.error("Database disconnected: ", err)
-    })
+        console.error("Database disconnected: ", err);
+    });
