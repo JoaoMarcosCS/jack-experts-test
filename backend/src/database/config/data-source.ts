@@ -10,8 +10,8 @@ export const AppDataSource = new DataSource({
     url: env.DATABASE_URI,
     entities: ["src/entities/*{.ts,.js}*"],
     //configuração de ambiente de desenvolvimento
-    synchronize: true,
-    logging: true
+    // synchronize: true,
+    // logging: true
 })
 
 AppDataSource.initialize()
