@@ -9,7 +9,6 @@ import cors from "cors"
 import swaggerUi from "swagger-ui-express"
 import { corsOptions } from './config/corsOptions';
 import swaggerDoc from "./swagger.json";
-import { seeder } from './database/seeds/seeder';
 
 dotenv.config();
 
