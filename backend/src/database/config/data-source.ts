@@ -1,11 +1,13 @@
 import { DataSource } from "typeorm";
 import { seeder } from "../seeds/seeder";
 import { env } from "../../environment/env";
+import { User } from "../../entities/user.entity";
+import { Task } from "../../entities/task.entity";
 
 export const AppDataSource = new DataSource({
     type: "mysql",
     url: env.DATABASE_URI,
-    entities: ["../../entities/*{.ts,.js}*"], // Verifique se esse caminho está correto
+    entities: [User, Task], // Verifique se esse caminho está correto
     // synchronize: true, // Apenas para desenvolvimento
     logging: true // Para logar todas as queries
 });
