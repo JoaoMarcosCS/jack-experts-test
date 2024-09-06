@@ -13,8 +13,9 @@ import { seeder } from './database/seeds/seeder';
 
 dotenv.config();
 
-const dbFile = "db.sqlite";
-if (existsSync(dbFile)) unlinkSync(dbFile);
+//configuração apenas para o ambiente de desenvolvimento
+// const dbFile = "db.sqlite";
+// if (existsSync(dbFile)) unlinkSync(dbFile);
 
 const app = express();
 
