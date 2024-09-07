@@ -5,8 +5,8 @@ export const AppDataSource = new DataSource({
     type: "sqlite",
     database:"db.sqlite",
     entities: ["src/entities/*{.ts,.js}*"],
-    synchronize: true, // Apenas para desenvolvimento
-    logging: true // Para logar todas as queries
+    //synchronize: true, // Apenas para desenvolvimento
+    //logging: true // Para logar todas as queries
 });
 
 AppDataSource.initialize()
