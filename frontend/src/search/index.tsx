@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { useSearchTask } from "./hooks/useSearchTask";
 import { useUserStore } from "../store/user.store";
 import { CardTask } from "../components/Cards/CardTask";
-import { Title } from "../components/Typography/styled";
+import { SecondaryText, Title } from "../components/Typography/styled";
 import { Loader2 } from "lucide-react";
 
 export const Search = () => {
@@ -27,9 +27,13 @@ export const Search = () => {
                 )}
                 { !isLoading && data && (
                     <>
-                    {data.tasks.map((task) => (
-                        <CardTask key={task.id} task={task}/>
-                    ))}
+                    {data.tasks.length === 0 ? (
+                         <SecondaryText >Nenhuma tarefa encontrado com o título {searchText}</SecondaryText>
+                     ) : (
+                         data.tasks.map((task) => (
+                             <CardTask key={task.id} task={task}/>
+                         ))
+                     )}
                     </>
                 )}
             </div>
