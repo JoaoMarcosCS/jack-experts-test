@@ -43,6 +43,15 @@
 </br>
 </br>
 
+</br>
+</br>
+
+ Antes de seguir para a estrutura de pastas, eu já criei um usuário com 10 tasks prontas para a demonstrção. O email é <code>jmcsjoaomarcos@gmail.com</code> e a senha é <code>123456</code>
+
+ 
+</br>
+</br>
+
 <code>components.json</code>: arquivo de configuração do shadcn.
 
 <code>src</code>: pasta que contém toda aplicação.
