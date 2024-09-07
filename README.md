@@ -8,7 +8,7 @@ O desafio do teste técnico para o estágio de desenvolvedor fullstack é desenv
 Gerenciador de Tarefas usando ReactJS para o frontend e Node.Js no backend.
 
 <h2>💡 Solução</h2>
-O desafio foi concluido usando ReactJS para o frontend, NodeJS para o backend e Sqlite como base de dados. Veja as pastas <code>/backend</code> e <code>/frontend</code> para acessar o código e a explicação da estrutura de pastas
+O desafio foi concluido usando ReactJS para o frontend, NodeJS para o backend e Sqlite como base de dados. Veja as pastas <code>/backend</code> e <code>/frontend</code> para acessar o código e a explicação da estrutura de pastas. As funcionalidades do desafio requeriam operações de CRUD do usuário e de tarefas. Ademais, a solução que foi desenvolvida abrange as funcionalidades requeridas e possui extras como a procura de tarefas do usuário e favoritar as tarefas que podem ser mais recorrentes. Na base de dados há um usuário de demonstração já, as credenciais de login são email: jmcsjoaomarcos@gmail.com e a senha:123456 
 
 
 <h2>🎨 Tecnologias do frontend</h2>
