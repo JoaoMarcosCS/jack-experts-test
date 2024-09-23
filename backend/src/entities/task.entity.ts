@@ -1,13 +1,13 @@
 import { BeforeUpdate, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./user.entity";
 
-@Entity()
+@Entity('task')
 export class Task {
 
     @PrimaryGeneratedColumn()
     id: number;
 
-    @CreateDateColumn({ type: 'datetime' })
+    @CreateDateColumn({ type: 'timestamp' })
     createdAt: Date;
     
     @Column()
